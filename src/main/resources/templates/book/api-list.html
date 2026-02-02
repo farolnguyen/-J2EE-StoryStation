@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Book Management</title>
+    <th:block th:replace="~{layout::link-css}"></th:block>
+    <th:block th:replace="~{layout::custom-css}"></th:block>
+</head>
+
+<body>
+    <th:block th:replace="~{layout::header}"></th:block>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <h2 class="mb-0">📚 API Book Management</h2>
+                        <a href="/books/api-add" class="btn btn-light" sec:authorize="hasAnyAuthority('ADMIN','USER')">
+                            <i class="bi bi-plus-circle"></i> Add New Book
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-md-8">
+                                <form class="d-flex" onsubmit="searchBooks(event)">
+                                    <input class="form-control me-2" type="search" placeholder="Search books..." 
+                                           aria-label="Search" id="searchKeyword">
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                    <button class="btn btn-outline-secondary ms-2" type="button" onclick="loadBooks()">Reset</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th width="5%">ID</th>
+                                        <th width="30%">Title</th>
+                                        <th width="20%">Author</th>
+                                        <th width="10%">Price</th>
+                                        <th width="15%">Category</th>
+                                        <th width="20%" sec:authorize="hasAnyAuthority('ADMIN','USER')">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="book-table-body">
+                                    <tr>
+                                        <td colspan="6" class="text-center">
+                                            <div class="spinner-border text-primary" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <th:block th:replace="~{layout::footer}"></th:block>
+    <script th:src="@{/js/api-book-list.js}"></script>
+</body>
+
+</html>

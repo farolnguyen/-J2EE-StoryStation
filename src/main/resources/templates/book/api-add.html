@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Book - API</title>
+    <th:block th:replace="~{layout::link-css}"></th:block>
+    <th:block th:replace="~{layout::custom-css}"></th:block>
+</head>
+
+<body>
+    <th:block th:replace="~{layout::header}"></th:block>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h2 class="mb-0">➕ Add New Book</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="addBookForm" onsubmit="handleSubmit(event)">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Title <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="title" name="title" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="author" class="form-label">Author <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="author" name="author" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="price" class="form-label">Price <span class="text-danger">*</span></label>
+                                <input type="number" step="0.01" class="form-control" id="price" name="price" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="categoryId" class="form-label">Category <span class="text-danger">*</span></label>
+                                <select class="form-select" id="categoryId" name="categoryId" required>
+                                    <option value="">-- Select Category --</option>
+                                </select>
+                            </div>
+                            
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a href="/books/api-list" class="btn btn-secondary">Cancel</a>
+                                <button type="submit" class="btn btn-success">Save Book</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <th:block th:replace="~{layout::footer}"></th:block>
+    <script th:src="@{/js/api-book-add.js}"></script>
+</body>
+
+</html>

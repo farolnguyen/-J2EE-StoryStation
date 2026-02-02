@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <meta name="viewport" content="width=device-width, initial-
-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>My App</title>
     <link th:fragment="link-css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
@@ -19,7 +18,7 @@ scale=1.0">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">HUTECH</a>
 
-                <button class="navbar-toggler" type="button" data-bs- toggle="collapse"
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -29,9 +28,38 @@ scale=1.0">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="/books">List
-                                Book</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/books/add">Add Book</a></li>
+                        <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN','USER')">
+                            <a class="nav-link" href="/books">
+                                List Book
+                            </a>
+                        </li>
+                        <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN')">
+                            <a class="nav-link" href="/books/add">
+                                Add Book
+                            </a>
+                        </li>
+                        <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN','USER')">
+                            <a class="nav-link" href="/books/api-list">
+                                <span class="badge bg-gradient text-white" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                    🚀 API Book List
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN','USER')">
+                            <a class="nav-link" href="/cart">
+                                Cart
+                            </a>
+                        </li>
+                        <li sec:authorize="isAuthenticated()">
+                            <form th:action="@{/logout}" method="post">
+                                <button class="btn btn-outline-danger" type="submit">Logout</button>
+                            </form>
+                        </li>
+                        <li sec:authorize="!isAuthenticated()">
+                            <a class="btn btn-outline-primary" href="/login">
+                                Login
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

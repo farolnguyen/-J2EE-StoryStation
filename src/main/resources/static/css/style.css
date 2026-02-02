@@ -1,11 +1,168 @@
-nav{
-text-align: center;
+/* Navigation */
+nav {
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-.pagination{
-display: inline-block;
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #0d6efd !important;
 }
+
+/* Pagination */
+.pagination {
+    display: inline-block;
+}
+
+.pagination .page-link {
+    border-radius: 5px;
+    margin: 0 3px;
+    transition: all 0.3s ease;
+}
+
+.pagination .page-link:hover {
+    background-color: #0d6efd;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Footer */
 .footer {
-position: fixed;
-bottom: 0;
-width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px 0;
+    margin-top: 50px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.card-header {
+    border-radius: 15px 15px 0 0 !important;
+    font-weight: bold;
+}
+
+/* Tables */
+.table-hover tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.01);
+}
+
+/* Buttons */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+    color: #333;
+    border: none;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    color: #333;
+    border: none;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    border: none;
+}
+
+.btn-group .btn {
+    margin: 0 2px;
+}
+
+/* Forms */
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+/* Badges */
+.badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* Loading Spinner */
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Body */
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+/* Container */
+.container {
+    padding-bottom: 100px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .btn-group {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .btn-group .btn {
+        margin: 2px 0;
+        width: 100%;
+    }
+    
+    .card-header h2 {
+        font-size: 1.5rem;
+    }
 }
